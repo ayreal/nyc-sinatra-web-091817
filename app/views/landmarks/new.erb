@@ -1,0 +1,24 @@
+<h1>MARK YOUR PLACE IN THE WORLD!!!!!</h1>
+<h2>!!!!!!!!!!CREATE A LANDMARK!!!!!!!!!!</h2>
+
+<form action="/landmarks" method="post">
+  <br></br>
+
+  <label>Landmark Name: </label>
+  <input type="text" name="landmark[name]" id="landmark_name">
+
+  <br></br>
+
+  <label>Figure Name: </label>
+  <% @figures.each do |figure| %>
+    <input type="radio" name="figure_name" value="<%= figure.name %>" id="figure_name" >
+    <%= figure.name %>
+  <% end %>
+
+  <br></br>
+
+  <label>Year Completed: </label>
+  <input type="text" name="landmark[year_completed]" id="landmark_year_completed">
+
+  <input type="submit" value="Create New Landmark">
+</form>

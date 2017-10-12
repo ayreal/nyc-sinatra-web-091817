@@ -1,0 +1,36 @@
+<h1>MARK YOUR PLACE IN THE WORLD!!!!!</h1>
+<h2>!!!!!!!!!!EDIT A LANDMARK!!!!!!!!!!</h2>
+
+<form action="/landmarks/<%= @landmark.id %>" method="post">
+  <input hidden="true" name="_method" value="patch">
+
+  <label>Landmark Name: </label>
+  <input type="text" name="landmark[name]" value="<%= @landmark.name %>" id="name">
+  <!-- #fill_in : is input id=""
+  #expect to_include? : is input name="" -->
+
+  <br></br>
+
+  <label>Update the Landmark Figure: </label>
+  <br></br>
+  <% @figures.each do |figure| %>
+      <input[type= "checkbox"] name="landmark[figure_id]" value="<%= figure.id %>" id="<%= figure.id %>" <%= 'checked' if figure.landmarks.include?(@landmark) %> >
+      <%= figure.name %>
+  <% end %>
+  <br></br>
+
+  <p>OOOOORRRRRRRR..........</p>
+
+  <p>Create a New Landmark Figure: </p>
+  <label>Figure Name: </label>
+  <input type="text" name="figure[name]" value="" id="figure_name" >
+
+  <br></br>
+
+  <label>Year Completed: </label>
+  <input type="text" name="landmark[year_completed]" value="<%= @landmark.year_completed %>" id="year_completed">
+
+  <br></br>
+
+  <input type="submit" value="Edit Landmark">
+</form>
